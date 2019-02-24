@@ -1,0 +1,35 @@
+# Logs and databases #
+######################
+*.log*
+*.log
+*.sql
+*.sqlite3
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+media_root/
+static_root/
+__pycache__/
+migrations/
+notebooks/
+.vscode/
+.ipynb_checkpoints/
+*.py[cod]
+*.pid
+*raw/
+*sock/
+*.env
+*.pem
+*.key
+
+# Elastic Beanstalk Files
+*/.elasticbeanstalk/*
+*/!.elasticbeanstalk/config.yml
