@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <p>
+            <h1>Asilinks</h1>
+            <span class="secondary">
+            {% now "d F \d\e Y" %}
+            </span>
+            </p>
+            <h3>REPORTE FINANCIERO</h3>
+            <p>
+            {{ request.user.first_name }} {{ request.user.last_name }}<br>
+            {{ request.user.email }}<br>
+            {{ request.user.postal_code }}, {{ request.user.city }}<br>
+            Transacciones desde el {{ date_init | date:"d-m-Y" }} hasta {{ date_end | date:"d-m-Y" }}<br>
+            </p>
+            <h3>Items bought</h3>
+            <table>
+                <thead><tr>
+                    <th>Fecha</th>
+                    <th>Transacción</th>
+                    <th>Monto</th>
+                </tr></thead>
+                <tbody>
+                    {% for transaction in data %}
+                        <tr class="row{% cycle "1" "2" %}">
+                        <td>{{ transaction.date | date:"d-m-Y" }}</td>
+                        <td class="num">{{ transaction.get_operation_display }}</td>
+                        <td class="num">{{ transaction.amount }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+    </body>
+</html>

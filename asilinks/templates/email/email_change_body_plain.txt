@@ -1,0 +1,19 @@
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans with full_name=user.get_full_name refer_email=user.email %}
+Hola {{ receiver_name }}
+---------------------
+
+Para terminar el proceso de cambio de correo electrónico en su cuenta de Asilinks {{ username }}, debe hacer clic en el siguiente vínculo:
+
+Regístrate 
+( {{ protocol }}://{{ domain }}/email_confirm/?uid={{ uid }}&token={{ token }}&ref={{ ref }} )
+
+
+Sinceramente, El equipo Asilinks
+--------------------------------
+Conecta y produce, comparte y prospera.
+Sé un Asilinker
+
+Plataforma Asilinks
+{% endblocktrans %}{% endautoescape %}

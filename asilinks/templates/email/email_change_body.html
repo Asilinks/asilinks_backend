@@ -1,0 +1,12 @@
+{% extends 'email/base.html' %}
+
+{% block content %}
+{% load i18n %}
+{% autoescape off %}
+<div style="font-family: 'Quicksand', sans-serif; font-size: 20px;">
+    <p style="font-family: 'Quicksand', sans-serif; font-size: 20px; margin: 25px 0px; padding: 0;">Para terminar el proceso de cambio de correo electrónico en su cuenta de Asilinks {{ username }}, debe hacer clic en el siguiente vínculo:</p>
+    <a href="{{ protocol }}://{{ domain }}/email_confirm/?uid={{ uid }}&token={{ token }}&ref={{ ref }}" style="color: #FF5D60 !important; text-decoration: none; font-weight: bolder; background-color: #ffffff !important; border-radius: 4px; align-items: center; justify-content: center; margin: 20px 10px; padding: .8rem 2rem; border: none #ffffff;">Cambiar Email</a>
+    <h5>Sinceramente, El equipo Asilinks</h5>
+  </div>
+{% endautoescape %}
+{% endblock %}

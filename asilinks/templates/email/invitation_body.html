@@ -1,0 +1,17 @@
+{% extends 'email/base.html' %}
+
+{% block content %}
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans with full_name=user.get_full_name refer_email=user.email %}
+<div style="font-family: 'Quicksand', sans-serif; font-size: 20px;">
+  <h4>Hola {{ receiver_name }}</h4>
+  <p style="font-family: 'Quicksand', sans-serif; font-size: 20px; margin: 25px 0px; padding: 0;">Has sido invitado a formar parte de Asilinks de parte de
+    <strong>{{ full_name }}</strong>, haz clic en el siguiente vínculo:</p>
+  <a href="{{ protocol }}://{{ domain }}/registrarse?refer_email={{ refer_email }}" style="color: #FF5D60 !important; text-decoration: none; font-weight: bolder; background-color: #ffffff !important; border-radius: 4px; align-items: center; justify-content: center; margin: 20px 10px; padding: .8rem 2rem; border: none #ffffff;">Regístrate</a>
+  <h5 style="margin-bottom: 10px;">Sinceramente, el Equipo de Asilinks</h5>
+  <p style="font-family: 'Quicksand', sans-serif; font-size: 12px; line-height: 10px; margin: 10px 0px; padding: 0;">Conecta y produce, comparte y prospera.</p>
+  <p style="font-family: 'Quicksand', sans-serif; font-size: 12px; line-height: 10px; margin: 10px 0px; padding: 0;">Sé un Asilinker</p>
+</div>
+{% endblocktrans %}{% endautoescape %}
+{% endblock %}

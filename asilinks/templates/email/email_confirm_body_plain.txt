@@ -1,0 +1,11 @@
+{% load i18n %}
+{% autoescape off %}
+El correo  de su cuenta de Asilinks ha cambiado exitosamente.
+
+Sinceramente, El equipo Asilinks
+--------------------------------
+Conecta y produce, comparte y prospera.
+Sé un Asilinker
+
+Plataforma Asilinks
+{% endautoescape %}

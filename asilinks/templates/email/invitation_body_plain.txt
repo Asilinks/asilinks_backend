@@ -1,0 +1,20 @@
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans with full_name=user.get_full_name refer_email=user.email %}
+Hola {{ receiver_name }}
+---------------------
+
+Has sido invitado a formar parte de Asilinks de parte de {{ full_name }},
+haz clic en el siguiente vínculo:
+
+Regístrate 
+( {{ protocol }}://{{ domain }}/registrarse?refer_email={{ refer_email }} )
+
+
+Sinceramente, El equipo Asilinks
+--------------------------------
+Conecta y produce, comparte y prospera.
+Sé un Asilinker
+
+Plataforma Asilinks
+{% endblocktrans %}{% endautoescape %}

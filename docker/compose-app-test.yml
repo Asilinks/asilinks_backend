@@ -1,0 +1,63 @@
+version: '2'
+services:
+
+  django_test:
+    image: "joschsan/asilinks:devel"
+    build:
+      context: .
+      dockerfile: Dockerfile-devel
+    container_name: django_test
+    hostname: asilinks
+    network_mode: "bridge"
+    ports: 
+      - "8000:8080"
+    external_links:
+      - mongo
+    env_file:
+    - test.env
+    volumes:
+      - ../:/asilinks_server
+    working_dir: /asilinks_server/asilinks
+    stdin_open: true
+    tty: true
+    command: django-admin runserver --pythonpath /asilinks_server/asilinks --settings asilinks.settings 0:8080
+
+  worker_test:
+    image: "joschsan/asilinks:devel"
+    build:
+      context: .
+      dockerfile: Dockerfile-devel
+    container_name: worker_test
+    hostname: asilinks
+    network_mode: "bridge"
+    external_links:
+      - mongo
+    env_file:
+      - test.env
+    volumes:
+      - ../:/asilinks_server
+    working_dir: /asilinks_server/asilinks
+    stdin_open: true
+    tty: true
+    command: celery -A asilinks worker -l info -c 20
+
+  others_test:
+    image: "joschsan/asilinks:devel"
+    build:
+      context: .
+      dockerfile: Dockerfile-devel
+    container_name: others_test
+    hostname: others
+    network_mode: "bridge"
+    ports: 
+      - "8888:8888"
+    external_links:
+      - mongo
+    env_file:
+    - test.env
+    volumes:
+      - ../:/asilinks_server
+      - ./jupyter_notebook_config.py:/root/.jupyter/jupyter_notebook_config.py
+      - ./supervisord-devel.conf:/etc/supervisor/conf.d/supervisord.conf
+    working_dir: /asilinks_server/notebooks
+    command: /usr/bin/supervisord

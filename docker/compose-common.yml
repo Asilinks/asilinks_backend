@@ -1,0 +1,28 @@
+version: '2'
+services:
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    hostname: nginx
+    network_mode: "bridge"
+    ports: 
+      - 80:80
+      - 443:443
+    extra_hosts:
+      - outside:172.17.0.1
+    volumes:
+      - ./nginx-devel.conf:/etc/nginx/conf.d/nginx.conf
+      - /opt:/opt
+      - /home/ubuntu/asilinks_server/ensayo:/ensayo
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    hostname: mongo
+    network_mode: "bridge"
+    ports: 
+      - "27017:27017"
+    volumes:
+      - /opt/mongodb:/data/db
+    command: mongod --auth
