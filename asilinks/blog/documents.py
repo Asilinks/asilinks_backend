@@ -6,3 +6,4 @@ class Article(document.Document):
     body = fields.StringField(max_length=10000)
     title = fields.StringField(max_length=500)
     author = fields.StringField(max_length=255)
+    draft = fields.BooleanField(default=False)
