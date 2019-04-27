@@ -56,5 +56,8 @@ urlpatterns = [
 
         # Admin app url
         url(r'^', include('admin.urls')),
+
+        # Blog urls
+        url(r'^', include('blog.urls')),
     ]))
 ]
