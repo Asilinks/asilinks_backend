@@ -37,3 +37,11 @@ class ArticleViewSet(NoDeleteModelView):
 
     def get_queryset(self):
         return Article.objects.all()
+
+    @action(methods=['get'], detail=False)
+    def statistics(self, request, *args, **kwargs):
+        return Response({
+            "published": len(Article.objects.filter(draft=False, active=True)),
+            "non_published": len(Article.objects.filter(draft=False, active=False)),
+            "draft": len(Article.objects.filter(draft=True)),
+        })
