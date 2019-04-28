@@ -34,9 +34,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY',
 DEBUG = os.environ.get('DEBUG') != 'FALSE'
 
 # ALLOWED_HOSTS = ('*')
-# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
 ALLOWED_HOSTS = ('.asilinks.com', 'localhost', 'testserver', '127.0.0.1')
-CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(\w+\.)?asilinks\.com$', )
+# CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(\w+\.)?asilinks\.com$', )
 
 
 # Application definition
