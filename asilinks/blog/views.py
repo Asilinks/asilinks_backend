@@ -14,6 +14,8 @@ from rest_framework.response import Response
 from .documents import Article
 # Serializer imports
 from .serializers import (ArticleSerializer)
+# Custom classes imports
+from .utils import get_blog_statistics
 
 
 # Base class for views
@@ -40,18 +42,4 @@ class ArticleViewSet(NoDeleteModelView):
 
     @action(methods=['get'], detail=False)
     def statistics(self, request, *args, **kwargs):
-        total_articles = Article.objects.all()
-        return Response({
-            "published": len([
-                article for article in total_articles
-                if not article.draft and article.active
-            ]),
-            "non_published": len([
-                article for article in total_articles
-                if not article.draft and not article.active
-            ]),
-            "draft": len([
-                article for article in total_articles
-                if article.draft
-            ]),
-        })
+        return Response(get_blog_statistics())
