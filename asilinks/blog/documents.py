@@ -9,5 +9,7 @@ class Article(document.Document):
     title = fields.StringField(max_length=500)
     author = fields.StringField(max_length=255)
     draft = fields.BooleanField(default=False)
+    article_image = LocalStorageFileField(upload_to='blog/',
+        default='blog/article_default.png', storage=PublicOverrideMediaStorage())
     author_image = LocalStorageFileField(upload_to='blog/',
-        default='blog/default.png', storage=PublicOverrideMediaStorage())
+        default='blog/author_default.png', storage=PublicOverrideMediaStorage())
