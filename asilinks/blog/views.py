@@ -40,8 +40,18 @@ class ArticleViewSet(NoDeleteModelView):
 
     @action(methods=['get'], detail=False)
     def statistics(self, request, *args, **kwargs):
+        total_articles = Article.objects.all()
         return Response({
-            "published": len(Article.objects.filter(draft=False, active=True)),
-            "non_published": len(Article.objects.filter(draft=False, active=False)),
-            "draft": len(Article.objects.filter(draft=True)),
+            "published": len([
+                article for article in total_articles
+                if not article.draft and article.active
+            ]),
+            "non_published": len([
+                article for article in total_articles
+                if not article.draft and not article.active
+            ]),
+            "draft": len([
+                article for article in total_articles
+                if article.draft
+            ]),
         })
