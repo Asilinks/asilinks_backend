@@ -11,6 +11,7 @@ from asilinks.validators import file_max_size
 
 
 class ArticleSerializer(DocumentSerializer):
+    category_name = serializers.SerializerMethodField()
 
     article_image = fields.ImageField(use_url=True, required=False, 
         default='blog/article_default.png', validators=[file_max_size])
@@ -20,6 +21,9 @@ class ArticleSerializer(DocumentSerializer):
     class Meta:
         model = Article
         fields = '__all__'
+
+    def get_category_name(self, instance):
+        return instance.category.name if instance.category else None
 
     def create(self, validated_data):
 

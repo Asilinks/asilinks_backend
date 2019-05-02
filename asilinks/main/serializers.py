@@ -323,7 +323,7 @@ class ListCategorySerializer(DocumentSerializer):
 
     class Meta:
         model = Category
-        fields = ('name', 'image', 'about', 'links',)
+        fields = ('id', 'name', 'image', 'about', 'links',)
         extra_kwargs = {
             'image': {'write_only': True},
         }
