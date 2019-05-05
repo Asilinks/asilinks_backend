@@ -1,3 +1,4 @@
+import datetime as dt
 from django.core.files.base import ContentFile
 from mongoengine import fields, document
 from asilinks.fields import LocalStorageFileField
@@ -15,3 +16,4 @@ class Article(document.Document):
         default='blog/article_default.png', storage=PublicOverrideMediaStorage())
     author_image = LocalStorageFileField(upload_to='blog/',
         default='blog/author_default.png', storage=PublicOverrideMediaStorage())
+    created_at = fields.DateTimeField(default=dt.datetime.now)
