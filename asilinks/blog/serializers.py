@@ -28,6 +28,8 @@ class ArticleSerializer(DocumentSerializer):
     def create(self, validated_data):
 
         instance = Article(**validated_data)
+        if instance.draft:
+            instance.active = False
         instance.save()
 
         if 'article_image' in validated_data:
