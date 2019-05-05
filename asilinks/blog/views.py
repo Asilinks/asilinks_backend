@@ -38,7 +38,7 @@ class ArticleViewSet(NoDeleteModelView):
     serializer_class = ArticleSerializer
 
     def get_queryset(self):
-        return Article.objects.all()
+        return Article.objects.all().order_by('-id')
 
     @action(methods=['get'], detail=False)
     def statistics(self, request, *args, **kwargs):
