@@ -42,18 +42,22 @@ class ArticleSerializer(DocumentSerializer):
         
         return instance
 
+    def update(self, instance, validated_data):
+        instance.active = validated_data.get('active', instance.active)
+        instance.body = validated_data.get('body', instance.body)
+        instance.title = validated_data.get('title', instance.title)
+        instance.author = validated_data.get('author', instance.author)
+        instance.draft = validated_data.get('draft', instance.draft)
+        instance.category = validated_data.get('category', instance.category)
+        instance.created_at = validated_data.get('created_at', instance.created_at)
+        instance.save()
 
-    # def update(self, instance, validated_data):
+        if 'article_image' in validated_data:
+            name = 'asi-{}.{}'.format(instance.id, validated_data['article_image'].name.split('.')[-1])
+            instance.article_image.save(name, validated_data.get('article_image'))
         
+        if 'author_image' in validated_data:
+            name = 'asi-{}.{}'.format(instance.id, validated_data['author_image'].name.split('.')[-1])
+            instance.author_image.save(name, validated_data.get('author_image'))
 
-    #     if 'article_image' in validated_data:
-    #         name = 'asi-article-{}.{}'.format(instance.id, validated_data['article_image'].name.split('.')[-1])
-    #         instance.article_image.save(name, validated_data.get('article_image'))
-        
-    #     if 'author_image' in validated_data:
-    #         name = 'asi-author-{}.{}'.format(instance.id, validated_data['author_image'].name.split('.')[-1])
-    #         instance.author_image.save(name, validated_data.get('author_image'))
-        
-    #     instance.save()
-        
-    #     return instance
+        return instance
