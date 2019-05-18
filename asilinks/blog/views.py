@@ -38,7 +38,11 @@ class ArticleViewSet(NoDeleteModelView):
     serializer_class = ArticleSerializer
 
     def get_queryset(self):
-        return Article.objects.all().order_by('-id')
+        queryset = Article.objects.all().order_by('-id')
+        category = self.request.query_params.get('category', None)
+        if category is not None:
+            queryset = queryset.filter(category=category)
+        return queryset
 
     @action(methods=['get'], detail=False)
     def statistics(self, request, *args, **kwargs):
