@@ -10,7 +10,7 @@ services:
     hostname: asilinks
     network_mode: "bridge"
     ports: 
-      - "8080:8080"
+      - "80:8080"
       - "5555:5555"
     extra_hosts:
       - "mongo: 172.31.29.240"
