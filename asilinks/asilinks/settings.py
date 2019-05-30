@@ -35,7 +35,7 @@ DEBUG = os.environ.get('DEBUG') != 'FALSE'
 
 # ALLOWED_HOSTS = ('*')
 CORS_ORIGIN_ALLOW_ALL = True
-ALLOWED_HOSTS = ('.asilinks.com', 'localhost', 'testserver', '127.0.0.1')
+ALLOWED_HOSTS = ('api-107843226.us-west-2.elb.amazonaws.com', 'localhost')
 # CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(\w+\.)?asilinks\.com$', )
 
 

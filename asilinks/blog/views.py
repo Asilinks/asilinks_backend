@@ -25,10 +25,9 @@ class NoDeleteModelView(mixins.CreateModelMixin,
                         mixins.ListModelMixin,
                         viewsets.GenericViewSet):
     """
-	Base Model View for BackOffice endpoints
+	Base Model View for Blog endpoints
 	"""
-    # permission_classes = (IsAuthenticated, IsAdminUser,)
-    pass
+    permission_classes = (IsAuthenticated, IsAdminUser,)
 
 
 class ArticleViewSet(NoDeleteModelView):

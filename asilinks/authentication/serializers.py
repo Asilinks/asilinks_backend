@@ -90,7 +90,8 @@ class AccountSerializer(ValidateRecaptchaMixin, DocumentSerializer):
         model = Account
         fields = ('first_name', 'last_name', 'email', 'residence', 'full_name',
             'sponsor', 'password', 'refer_email', 'is_partner', 'initials',
-            'paypal_email', 'avatar', 'birth_date', 'commercial_sector', 'gender', )
+            'paypal_email', 'avatar', 'birth_date', 'commercial_sector', 'gender', 
+            'is_blogger')
 
         extra_kwargs = {
             'password': {'required': True, 'write_only': True},
