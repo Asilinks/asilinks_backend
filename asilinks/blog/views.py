@@ -46,3 +46,17 @@ class ArticleViewSet(NoDeleteModelView):
     @action(methods=['get'], detail=False)
     def statistics(self, request, *args, **kwargs):
         return Response(get_blog_statistics())
+
+
+class ArticleListViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    LISTA DE ARTÍCULOS PÚBLICA
+    """
+    serializer_class = ArticleSerializer
+
+    def get_queryset(self):
+        queryset = Article.objects.all().order_by('-id')
+        category = self.request.query_params.get('category', None)
+        if category is not None:
+            queryset = queryset.filter(category=category)
+        return queryset
