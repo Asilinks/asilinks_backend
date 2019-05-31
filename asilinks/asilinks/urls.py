@@ -38,7 +38,7 @@ resources_router.register(r'tests', main_views.TestViewSet, base_name='test')
 
 
 urlpatterns = [
-    url(r'^', include([
+    url(r'^(?P<version>(test|dev|beta|v1))/', include([
         url(r'^invite_client/$', auth_views.InviteClientAPIView.as_view(), name='invite-client'),
         url(r'^contact_us/$', auth_views.ContactUsAPIView.as_view(), name='contact-us'),
         url(r'^suggest_us/$', auth_views.SuggestUsAPIView.as_view(), name='suggest-us'),

@@ -29,7 +29,7 @@ class SendEmailMixin():
     email_template_name = None
     html_email_template_name = None
     # html_email_template_name = 'email/html_password_reset_body.html'
-    domain_override = settings.EMAIL_REDIRECT_DOMAIN
+    domain_override = 'asilinks.com'
     token_generator = default_token_generator
 
     def perform_create(self, serializer):
@@ -79,7 +79,7 @@ class ValidateRecaptchaMixin(serializers.Serializer):
     Validation layer for reCaptcha token in serializer.
     """
 
-    recaptcha = fields.CharField(required=True, write_only=True)
+    recaptcha = fields.CharField(required=(not settings.DEBUG), write_only=True)
 
     def get_field_names(self, declared_fields, info):
         fields = super().get_field_names(declared_fields, info)

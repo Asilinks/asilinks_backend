@@ -90,8 +90,7 @@ class AccountSerializer(ValidateRecaptchaMixin, DocumentSerializer):
         model = Account
         fields = ('first_name', 'last_name', 'email', 'residence', 'full_name',
             'sponsor', 'password', 'refer_email', 'is_partner', 'initials',
-            'paypal_email', 'avatar', 'birth_date', 'commercial_sector', 'gender', 
-            'is_blogger')
+            'paypal_email', 'avatar', 'birth_date', 'commercial_sector', 'gender', )
 
         extra_kwargs = {
             'password': {'required': True, 'write_only': True},
@@ -195,7 +194,6 @@ class PartnerAccountSerializer(ValidateRecaptchaMixin, DocumentSerializer):
                 queryset=Account.objects.all(),
                 message=_('Este correo electrónico ya ha sido registrado.'),
             ) ]},
-            'residence': {'required': True},
         }
 
     def validate_refer_email(self, value):

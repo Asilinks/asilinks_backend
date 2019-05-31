@@ -249,8 +249,8 @@ class MakeRequestSerializer(DocumentSerializer):
 
         instance.modify(**update)
         instance.client.modify(push__requests_todo=instance, last_activity=dt.datetime.now())
-        # select_round_partners(str(instance.id))
-        select_round_partners.delay(str(instance.id))
+        select_round_partners(str(instance.id))
+        # select_round_partners.delay(str(instance.id))
 
         return instance
 

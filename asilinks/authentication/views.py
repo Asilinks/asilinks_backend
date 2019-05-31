@@ -119,14 +119,13 @@ class SelfAccountViewSet(mixins.RetrieveModelMixin,
         subject_template_name = 'email/email_change_subject.txt'
         email_template_name = 'email/email_change_body_plain.txt'
         html_email_template_name = 'email/email_change_body.html'
-        domain_override = settings.EMAIL_REDIRECT_DOMAIN
 
         serializer = ChangeEmailSerializer(data=request.data,
             context=self.get_serializer_context())
         serializer.is_valid(raise_exception=True)
         serializer.save(subject_template_name, email_template_name,
             html_email_template_name=html_email_template_name,
-            request=request, domain_override=domain_override)
+            request=request)
         return Response({'message': success_message},
             status=status.HTTP_202_ACCEPTED)
 

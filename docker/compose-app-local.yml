@@ -10,12 +10,12 @@ services:
     hostname: asilinks
     network_mode: "bridge"
     ports: 
-      - "80:8080"
+      - "8080:8080"
       - "5555:5555"
     extra_hosts:
-      - "mongo: 172.31.29.240"
+      - "mongo: 52.36.168.65"
     env_file:
-      - blog.env
+      - dev.env
     volumes:
       - ../:/asilinks_server
     working_dir: /asilinks_server/asilinks
@@ -32,9 +32,9 @@ services:
     hostname: asilinks
     network_mode: "bridge"
     extra_hosts:
-      - "mongo: 172.31.29.240"
+      - "mongo: 52.36.168.65"
     env_file:
-      - blog.env
+      - dev.env
     volumes:
       - ../:/asilinks_server
     working_dir: /asilinks_server/asilinks
@@ -53,9 +53,9 @@ services:
     ports: 
       - "8888:8888"
     extra_hosts:
-      - "mongo: 172.31.29.240"
+      - "mongo: 52.36.168.65"
     env_file:
-      - blog.env
+      - dev.env
     volumes:
       - ../:/asilinks_server
       - ./jupyter_notebook_config.py:/root/.jupyter/jupyter_notebook_config.py

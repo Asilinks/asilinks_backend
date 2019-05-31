@@ -50,7 +50,7 @@ services:
     hostname: others
     network_mode: "bridge"
     ports: 
-      - "8888:8888"
+      - "5555:8888"
     external_links:
       - mongo
     env_file:

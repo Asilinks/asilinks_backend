@@ -35,7 +35,7 @@ DEBUG = os.environ.get('DEBUG') != 'FALSE'
 
 # ALLOWED_HOSTS = ('*')
 CORS_ORIGIN_ALLOW_ALL = True
-ALLOWED_HOSTS = ('api-107843226.us-west-2.elb.amazonaws.com', 'localhost')
+ALLOWED_HOSTS = ('.asilinks.com', 'localhost', 'testserver', )
 # CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(\w+\.)?asilinks\.com$', )
 
 
@@ -170,7 +170,6 @@ EMAIL_HOST = 'email-smtp.us-west-2.amazonaws.com'
 EMAIL_HOST_USER = AWS_ACCESS_KEY_ID
 EMAIL_HOST_PASSWORD = os.environ.get('AWS_SMTP_PASSWORD')
 DEFAULT_FROM_EMAIL = 'Asilinks System <noreply@asilinks.com>'
-EMAIL_REDIRECT_DOMAIN = os.environ.get('EMAIL_REDIRECT_DOMAIN', 'asilinks.com')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
